@@ -11,9 +11,10 @@ import Header from "./components/Navbar/Header";
 import HomePage from "./pages/HomePage/HomePage";
 import FriendsPage from "./pages/FriendsPage/FriendsPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import TweetsPage from "./pages/TweetsPage/TweetsPage";
+import UsersPage from "./pages/UsersPage/UsersPage";
 
 import css from "./app.module.css";
+
 // import OthersPage from "./pages/OthersPage/OthersPage";
 
 const App = () => {
@@ -38,7 +39,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/tweets" element={<TweetsPage />} />
+        <Route path="/users" element={<UsersPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/friends" element={<FriendsPage />} />
         <Route path="/profile:id" element={<ProfilePage />} />

@@ -23,13 +23,13 @@ const LeftBar = () => {
           </li>
           <li>
             <NavLink
-              to="/tweets"
+              to="/users"
               className={({ isActive }) =>
                 isActive ? `${css.item} ${css.active}` : `${css.item}`
               }
             >
               <img src={Users} width="40px" alt="users" />
-              <span>Tweets</span>
+              <span>Users</span>
             </NavLink>
           </li>
         </ul>

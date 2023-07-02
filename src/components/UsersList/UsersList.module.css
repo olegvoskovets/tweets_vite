@@ -1,6 +1,11 @@
 @import url("../../index.css");
 
-.tweet {
+.user_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 48px;
+}
+.cardUser {
   position: relative;
   width: 380px;
   height: 460px;

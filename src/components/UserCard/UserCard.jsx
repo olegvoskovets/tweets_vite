@@ -1,16 +1,18 @@
 import { useState } from "react";
 import Logo from "../../images/logo.png";
-import css from "./Tweet.module.css";
-import CardUser from "../CardUser/CardUser";
+import css from "./UserCard.module.css";
 
-const Tweet = () => {
+import UserFoto from "../UserFoto/UserFoto";
+
+const UserCard = (props) => {
+  console.log("UserCard/ props: " + props);
   const [following, setFollowing] = useState(false);
 
   const handleClickFollowing = () => {
     setFollowing(!following);
   };
   return (
-    <div className={css.tweet}>
+    <li className={css.cardUser}>
       <div className={css.top}>
         <img
           className={css.logo}
@@ -22,7 +24,7 @@ const Tweet = () => {
         <div className={css.background_card}></div>
       </div>
       <div className={css.rectangle}>
-        <CardUser />
+        <UserFoto userUrl={"user"} />
       </div>
       <div className={css.button_block}>
         <div className={css.button_block_position}>
@@ -42,8 +44,8 @@ const Tweet = () => {
           </button>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 
-export default Tweet;
+export default UserCard;
