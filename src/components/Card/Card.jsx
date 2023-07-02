@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "../../images/logo.png";
-import difoltFoto from "/images/user18.png";
+// import difoltFoto from "../../images/user18.png";
 import UserFoto from "../UserFoto/UserFoto";
 import css from "./Card.module.css";
 
@@ -27,7 +27,7 @@ const Card = (props) => {
         <div className={css.background_card}></div>
       </div>
       <div className={css.rectangle}>
-        <UserFoto userUrl={difoltFoto} />
+        <UserFoto userUrl={currentUser.avatar} />
       </div>
       <div className={css.button_block}>
         <div className={css.button_block_position}>
