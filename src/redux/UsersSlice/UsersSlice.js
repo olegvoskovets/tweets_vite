@@ -4,7 +4,7 @@ import { getUsers } from "./operationsUsers";
 
 const initialState = {
   users: [],
-  //   filter: "",
+  page: 1,
   isLoading: false,
   isError: null,
   //   visibleForm: false,
@@ -13,7 +13,15 @@ const initialState = {
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    addPage(state) {
+      console.log("adding addPage");
+      state.page = state.page + 1;
+    },
+    resetPage(state) {
+      state.page = 1;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getUsers.pending, (state) => {
@@ -21,7 +29,8 @@ const usersSlice = createSlice({
         state.isError = "";
       })
       .addCase(getUsers.fulfilled, (state, { payload }) => {
-        state.users = payload;
+        console.log("payload: " + payload);
+        state.users = [...state.users, ...payload];
         state.isLoading = false;
       })
       .addCase(getUsers.rejected, (state, { payload }) => {
@@ -31,5 +40,5 @@ const usersSlice = createSlice({
   },
 });
 
-// export const { getFilter, toogleVisibleForm, logOutContacts } = usersSlice.actions;
+export const { addPage, resetPage } = usersSlice.actions;
 export const usersReduser = usersSlice.reducer;

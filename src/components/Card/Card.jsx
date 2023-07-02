@@ -7,11 +7,13 @@ import css from "./Card.module.css";
 const Card = (props) => {
   const user = props;
   const currentUser = user.user;
-  // console.log("currentUser ", currentUser);
+
   const [following, setFollowing] = useState(false);
+  const [followers, setFollowers] = useState(currentUser.followers);
 
   const handleClickFollowing = () => {
     setFollowing(!following);
+    setFollowers((prev) => (following ? prev - 1 : prev + 1));
   };
   return (
     <li className={css.cardUser}>
@@ -32,9 +34,7 @@ const Card = (props) => {
       <div className={css.button_block}>
         <div className={css.button_block_position}>
           <div className={css.tweets_count}>{currentUser.tweets} Tweets</div>
-          <div className={css.followers_count}>
-            {currentUser.followers} Followers
-          </div>
+          <div className={css.followers_count}>{followers} Followers</div>
           <button
             className={
               following
