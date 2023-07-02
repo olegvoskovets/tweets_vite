@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Logo from "../../images/logo.png";
-import css from "./Card.module.css";
+import difoltFoto from "/images/user18.png";
 import UserFoto from "../UserFoto/UserFoto";
+import css from "./Card.module.css";
 
 const Card = (props) => {
   const user = props;
@@ -14,6 +15,7 @@ const Card = (props) => {
   };
   return (
     <li className={css.cardUser}>
+      {/* <img src={difoltFoto} alt="" /> */}
       <div className={css.top}>
         <img
           className={css.logo}
@@ -25,7 +27,7 @@ const Card = (props) => {
         <div className={css.background_card}></div>
       </div>
       <div className={css.rectangle}>
-        <UserFoto userUrl={currentUser.avatar} />
+        <UserFoto userUrl={difoltFoto} />
       </div>
       <div className={css.button_block}>
         <div className={css.button_block_position}>
