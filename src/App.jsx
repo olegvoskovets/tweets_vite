@@ -1,27 +1,52 @@
-import { useState } from "react";
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import "./App.css";
+import {
+  Navigate,
+  Outlet,
+  Route,
+  // RouterProvider,
+  Routes,
+  // createBrowserRouter,
+} from "react-router-dom";
+import LeftBar from "./components/LeftBar/LeftBar";
+import Header from "./components/Navbar/Header";
+import HomePage from "./pages/HomePage/HomePage";
+import FriendsPage from "./pages/FriendsPage/FriendsPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import TweetsPage from "./pages/TweetsPage/TweetsPage";
 
-function App() {
-  const [count, setCount] = useState(0);
+import css from "./app.module.css";
+// import OthersPage from "./pages/OthersPage/OthersPage";
+
+const App = () => {
+  const Layout = () => {
+    return (
+      <div className={css.background}>
+        <Header />
+        <div className={css.container}>
+          <div style={{ display: "flex" }}>
+            <LeftBar />
+
+            <main className={css.main}>
+              <Outlet />
+            </main>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <>
-      <h1>TWEETS TWEETS TWEETS TWEETS</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/tweets" element={<TweetsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/friends" element={<FriendsPage />} />
+        <Route path="/profile:id" element={<ProfilePage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
   );
-}
+  // <RouterProvider router={router}></RouterProvider>;
+};
 
 export default App;
