@@ -1,7 +1,6 @@
 import css from "./UserFoto.module.css";
 
 const UserFoto = (userUrl) => {
-  console.log("userUrl", userUrl);
   const url = userUrl.userUrl;
 
   return (

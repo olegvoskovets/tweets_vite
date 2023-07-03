@@ -1,19 +1,21 @@
+// import { useSelector } from "react-redux";
 import Card from "../Card/Card";
-//import UserCard from "../UserCard/UserCard";
-// import UserFoto from "../UserFoto/UserFoto";
-// import Logo from "../../images/logo.png";
+
 import css from "./UsersList.module.css";
-// import { useState } from "react";
+// import { selectFollowingCurrentUser } from "../../redux/currentUser/selectorsCurrentUser";
 
 const UsersList = (users) => {
   const data = users.users;
-  console.log("UsersList ", data);
-
+  // const follows = useSelector(selectFollowingCurrentUser);
   return (
     <>
       <ul className={css.user_list}>
         {data.map((user) => (
-          <Card key={user.id} user={user} />
+          <Card
+            key={user.id}
+            user={user}
+            // follows={follows.includes(Number(user.id))}
+          />
         ))}
       </ul>
     </>

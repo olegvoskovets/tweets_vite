@@ -1,17 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUsers } from "./operationsUsers";
+import { getFollowingCurrentUser } from "./operationsCurrentUser";
+
 // import { fetchContacts, addContact, deleteContact } from "./operations";
 
 const initialState = {
-  users: [],
-  page: 1,
+  following: [],
+
   isLoading: false,
   isError: null,
   //   visibleForm: false,
 };
 
-const usersSlice = createSlice({
-  name: "users",
+const currentUserSlice = createSlice({
+  name: "currentUser",
   initialState,
   reducers: {
     addPage(state) {
@@ -23,20 +24,20 @@ const usersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getUsers.pending, (state) => {
+      .addCase(getFollowingCurrentUser.pending, (state) => {
         state.isLoading = true;
         state.isError = "";
       })
-      .addCase(getUsers.fulfilled, (state, { payload }) => {
-        state.users = [...state.users, ...payload];
+      .addCase(getFollowingCurrentUser.fulfilled, (state, { payload }) => {
+        state.following = [...payload];
         state.isLoading = false;
       })
-      .addCase(getUsers.rejected, (state, { payload }) => {
+      .addCase(getFollowingCurrentUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
       });
   },
 });
 
-export const { addPage, resetPage } = usersSlice.actions;
-export const usersReduser = usersSlice.reducer;
+// export const { getFollowingCurrentUser } = currentUserSlice.actions;
+export const currentUserReduser = currentUserSlice.reducer;

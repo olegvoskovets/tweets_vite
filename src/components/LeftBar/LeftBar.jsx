@@ -23,7 +23,7 @@ const LeftBar = () => {
           </li>
           <li>
             <NavLink
-              to="/users"
+              to="/tweets"
               className={({ isActive }) =>
                 isActive ? `${css.item} ${css.active}` : `${css.item}`
               }

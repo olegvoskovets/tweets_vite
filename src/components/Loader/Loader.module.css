@@ -21,6 +21,8 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  height: 350px;
+  /* height: 350px; */
   margin: 0 auto;
+  /* position: absolute;
+  margin: 0 auto; */
 }

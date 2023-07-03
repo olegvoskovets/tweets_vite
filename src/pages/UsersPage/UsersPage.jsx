@@ -11,6 +11,7 @@ import {
 import { Loader } from "../../components/Loader/Loader";
 import UsersList from "../../components/UsersList/UsersList";
 import { addPage } from "../../redux/UsersSlice/UsersSlice";
+// import { getFollowingCurrentUser } from "../../redux/currentUser/operationsCurrentUser";
 
 const UsersPage = () => {
   const dispatch = useDispatch();
@@ -20,30 +21,32 @@ const UsersPage = () => {
     if (page > 1) return;
     dispatch(getUsers(page));
     dispatch(addPage());
-  }, []);
+    // dispatch(getFollowingCurrentUser());
+  });
 
   const users = useSelector(selectUsers);
   const isLoading = useSelector(selectIsLoadingUsers);
 
   const handleClick = () => {
-    dispatch(addPage());
     dispatch(getUsers(page));
+    dispatch(addPage());
   };
   return (
-    <>
-      {isLoading ? (
+    <section className={css.usersPage}>
+      {isLoading && page < 2 ? (
         <Loader />
       ) : (
         <>
           <UsersList users={users} />
-          {page <= 6 && (
+          {page <= 6 && !isLoading && (
             <button className={css.load_more} onClick={handleClick}>
               Load More
             </button>
           )}
         </>
       )}
-    </>
+      {isLoading && <Loader />}
+    </section>
   );
 };
 
