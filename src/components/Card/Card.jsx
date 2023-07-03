@@ -19,12 +19,18 @@ const Card = (props) => {
   const [following, setFollowing] = useState(
     follows.includes(Number(currentUser.id))
   );
-  const [followers, setFollowers] = useState(currentUser.followers);
+  const [followers, setFollowers] = useState(
+    following ? currentUser.followers + 1 : currentUser.followers
+  );
+
+  const schangeFollowers = () => {
+    setFollowers((prev) => (following ? prev - 1 : prev + 1));
+  };
 
   const handleClickFollowing = () => {
-    addFollowing;
     setFollowing(!following);
-    setFollowers((prev) => (following ? prev - 1 : prev + 1));
+    schangeFollowers();
+
     dispatch(
       following ? resetFollowing(currentUser.id) : addFollowing(currentUser.id)
     );
