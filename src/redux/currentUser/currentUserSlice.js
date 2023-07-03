@@ -1,25 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getFollowingCurrentUser } from "./operationsCurrentUser";
 
-// import { fetchContacts, addContact, deleteContact } from "./operations";
-
 const initialState = {
   following: [],
 
   isLoading: false,
   isError: null,
-  //   visibleForm: false,
 };
 
 const currentUserSlice = createSlice({
   name: "currentUser",
   initialState,
   reducers: {
-    addPage(state) {
-      state.page = state.page + 1;
+    addFollowing(state, { payload }) {
+      state.following = [...state.following, Number(payload)];
     },
-    resetPage(state) {
-      state.page = 1;
+    resetFollowing(state, { payload }) {
+      state.following = state.following.filter(
+        (el) => Number(el) !== Number(payload)
+      );
     },
   },
   extraReducers: (builder) => {
@@ -39,5 +38,5 @@ const currentUserSlice = createSlice({
   },
 });
 
-// export const { getFollowingCurrentUser } = currentUserSlice.actions;
+export const { addFollowing, resetFollowing } = currentUserSlice.actions;
 export const currentUserReduser = currentUserSlice.reducer;

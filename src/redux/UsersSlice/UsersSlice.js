@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getUsers } from "./operationsUsers";
-// import { fetchContacts, addContact, deleteContact } from "./operations";
 
 const initialState = {
   users: [],
   page: 1,
   isLoading: false,
   isError: null,
-  //   visibleForm: false,
 };
 
 const usersSlice = createSlice({

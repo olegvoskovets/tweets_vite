@@ -1,48 +1,38 @@
 import { useState } from "react";
 import Logo from "../../images/logo.png";
-// import difoltFoto from "../../images/user18.png";
+
 import UserFoto from "../UserFoto/UserFoto";
 import css from "./Card.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectFollowingCurrentUser } from "../../redux/currentUser/selectorsCurrentUser";
-// import { selectIsLoadingUsers } from "../../redux/UsersSlice/selectorsUsers";
+import {
+  addFollowing,
+  resetFollowing,
+} from "../../redux/currentUser/currentUserSlice";
 
 const Card = (props) => {
-  console.log("props= ", props);
+  const dispatch = useDispatch();
   const user = props;
   const currentUser = user.user;
-  // const follows = props;
-  // const CurrentFollows = follows.follows;
-  // const isLoading = useSelector(selectIsLoadingUsers);
+
   const follows = useSelector(selectFollowingCurrentUser);
   const [following, setFollowing] = useState(
     follows.includes(Number(currentUser.id))
   );
   const [followers, setFollowers] = useState(currentUser.followers);
 
-  //follows.includes(Number(currentUser.id)); // якщо true то ми слідкуємо за цим юзером
-  // useEffect(() => {
-  //   setFollowing(follows.includes(Number(currentUser.id)));
-  // }, []);
-
-  // setFollowers((prev) => (following ? prev - 1 : prev + 1));
-
-  // console.log(
-  //   "following ",
-  //   follows.includes(Number(currentUser.id)),
-  //   " ",
-  //   currentUser.name
-  // );
-
   const handleClickFollowing = () => {
+    addFollowing;
     setFollowing(!following);
     setFollowers((prev) => (following ? prev - 1 : prev + 1));
+    dispatch(
+      following ? resetFollowing(currentUser.id) : addFollowing(currentUser.id)
+    );
   };
 
   return (
     <>
       <li className={css.cardUser}>
-        {/* <img src={difoltFoto} alt="" /> */}
         <div className={css.top}>
           <img
             className={css.logo}
