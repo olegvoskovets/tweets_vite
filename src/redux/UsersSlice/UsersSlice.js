@@ -3,6 +3,7 @@ import { getUsers } from "./operationsUsers";
 
 const initialState = {
   users: [],
+  filterFollowing: [],
   page: 1,
   isLoading: false,
   isError: null,
@@ -17,6 +18,9 @@ const usersSlice = createSlice({
     },
     resetPage(state) {
       state.page = 1;
+    },
+    updateFilter(state, { payload }) {
+      state.filterFollowing = payload;
     },
   },
   extraReducers: (builder) => {
@@ -36,5 +40,5 @@ const usersSlice = createSlice({
   },
 });
 
-export const { addPage, resetPage } = usersSlice.actions;
+export const { addPage, resetPage, updateFilter } = usersSlice.actions;
 export const usersReduser = usersSlice.reducer;

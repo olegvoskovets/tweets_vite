@@ -8,7 +8,7 @@ const UsersList = (users) => {
   return (
     <>
       <ul className={css.user_list}>
-        {data.map((user) => (
+        {data?.map((user) => (
           <Card key={user.id} user={user} />
         ))}
       </ul>

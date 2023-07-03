@@ -3,6 +3,7 @@ import Home from "../../images/home.png";
 import Users from "../../images/users.png";
 import currentUser from "../../images/currentUser.jpg";
 import Friends from "../../images/friends2.png";
+import Other from "../../../public/images/other.png";
 import css from "./LeftBar.module.css";
 
 const LeftBar = () => {
@@ -68,7 +69,7 @@ const LeftBar = () => {
                 isActive ? `${css.item} ${css.active}` : `${css.item}`
               }
             >
-              <img src={"others"} alt="" />
+              <img className={css.Friends} src={Other} alt="Other" />
               <span>Others</span>
             </NavLink>
           </li>

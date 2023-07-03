@@ -1,17 +1,16 @@
 import { useEffect } from "react";
-// import UserCard from "../../components/UserCard/UserCard";
+
 import css from "./UsersPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../redux/UsersSlice/operationsUsers";
 import {
+  selectFilterFollowing,
   selectIsLoadingUsers,
   selectPage,
-  selectUsers,
 } from "../../redux/UsersSlice/selectorsUsers";
 import { Loader } from "../../components/Loader/Loader";
 import UsersList from "../../components/UsersList/UsersList";
 import { addPage } from "../../redux/UsersSlice/UsersSlice";
-// import { getFollowingCurrentUser } from "../../redux/currentUser/operationsCurrentUser";
 
 const UsersPage = () => {
   const dispatch = useDispatch();
@@ -21,11 +20,10 @@ const UsersPage = () => {
     if (page > 1) return;
     dispatch(getUsers(page));
     dispatch(addPage());
-    // dispatch(getFollowingCurrentUser());
   });
 
-  const users = useSelector(selectUsers);
   const isLoading = useSelector(selectIsLoadingUsers);
+  const usersfilter = useSelector(selectFilterFollowing);
 
   const handleClick = () => {
     dispatch(getUsers(page));
@@ -37,7 +35,7 @@ const UsersPage = () => {
         <Loader />
       ) : (
         <>
-          <UsersList users={users} />
+          <UsersList users={usersfilter} />
           {page <= 6 && !isLoading && (
             <button className={css.load_more} onClick={handleClick}>
               Load More
