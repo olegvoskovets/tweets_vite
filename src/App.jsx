@@ -43,7 +43,7 @@ const App = () => {
         <Route path="/tweets" element={<UsersPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/friends" element={<FriendsPage />} />
-        <Route path="/profile:id" element={<ProfilePage />} />
+        <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/others" element={<Others />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>

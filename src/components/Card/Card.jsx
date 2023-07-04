@@ -9,6 +9,7 @@ import {
   addFollowing,
   resetFollowing,
 } from "../../redux/currentUser/currentUserSlice";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
   const dispatch = useDispatch();
@@ -29,7 +30,6 @@ const Card = (props) => {
   };
 
   const handleClickFollowing = () => {
-    console.log("handleClickFollowing");
     setFollowing(!following);
     schangeFollowers();
 
@@ -52,7 +52,9 @@ const Card = (props) => {
           <div className={css.background_card}></div>
         </div>
         <div className={css.rectangle}>
-          <UserFoto userUrl={currentUser.avatar} />
+          <Link to={`/profile/${currentUser.id}`}>
+            <UserFoto userUrl={currentUser.avatar} />
+          </Link>
         </div>
         <div className={css.button_block}>
           <div className={css.button_block_position}>
