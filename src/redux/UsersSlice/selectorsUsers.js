@@ -6,29 +6,31 @@ export const selectUsers = (state) => state.users.users;
 export const selectIsLoadingUsers = (state) => state.users.isLoading;
 export const selectPage = (state) => state.users.page;
 export const selectFilterFollowing = (state) => state.users.filterFollowing;
+export const selectDropdownFollowing = (state) =>
+  state.users.dropdown_following;
 
 export const selectFilterSearch = createSelector(
-  [selectUsers, selectFilterFollowing],
+  [selectUsers, selectDropdownFollowing],
   (users, filter) => {
+    console.log(users);
+    if (users.length === 0) return [];
+
     let visibleCard = [];
     const followers = useSelector(selectFollowingCurrentUser);
-    console.log("followers", followers);
-    // let filter = [];
+
     if (filter === "followings") {
       console.log("followings");
-      //   visibleCard = users.filter((user) =>
-      //     followers.find((userId) => Number(user.id) === Number(userId))
-      //   );
+      visibleCard = users?.filter((user) =>
+        followers?.find((userId) => Number(user.id) === Number(userId))
+      );
     } else if (filter === "follow") {
-      console.log("follow");
+      users.forEach((user) => {
+        const result = followers?.includes(Number(user.id));
 
-      //   users.forEach((user) => {
-      //     const result = followers.includes(Number(user.id));
-      //     console.log("result= ", result);
-      //     if (!result) {
-      //       visibleCard.push(user);
-      //     }
-      //   });
+        if (!result) {
+          visibleCard.push(user);
+        }
+      });
     } else {
       visibleCard = [...users];
     }

@@ -12,6 +12,7 @@ import {
 
 const Card = (props) => {
   const dispatch = useDispatch();
+
   const user = props;
   const currentUser = user.user;
 
@@ -28,6 +29,7 @@ const Card = (props) => {
   };
 
   const handleClickFollowing = () => {
+    console.log("handleClickFollowing");
     setFollowing(!following);
     schangeFollowers();
 

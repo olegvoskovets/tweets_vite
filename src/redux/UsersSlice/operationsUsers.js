@@ -12,3 +12,14 @@ export const getUsers = createAsyncThunk(
     }
   }
 );
+
+export const updateFilterVisible = createAsyncThunk(
+  "users/updateFilterVisible",
+  async (users, thunk_Api) => {
+    try {
+      return users;
+    } catch (error) {
+      return thunk_Api.rejectWithValue(error.message);
+    }
+  }
+);

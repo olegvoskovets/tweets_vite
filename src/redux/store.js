@@ -21,7 +21,7 @@ const persistFollowingCurrentUser = {
   whitelist: ["following"],
 };
 
-const persistedAuthReducer = persistReducer(
+const persistedFollowingReducer = persistReducer(
   persistFollowingCurrentUser,
   currentUserReduser
 );
@@ -29,7 +29,7 @@ const persistedAuthReducer = persistReducer(
 export const store = configureStore({
   reducer: {
     users: usersReduser,
-    followingCurrentUser: persistedAuthReducer,
+    followingCurrentUser: persistedFollowingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
