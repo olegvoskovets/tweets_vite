@@ -11,6 +11,9 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.13.7",
+    "@mui/styled-engine": "^5.13.2",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "gh-pages": "^5.0.0",

@@ -21,21 +21,6 @@ const currentUserSlice = createSlice({
       );
     },
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(getFollowingCurrentUser.pending, (state) => {
-  //       state.isLoading = true;
-  //       state.isError = "";
-  //     })
-  //     .addCase(getFollowingCurrentUser.fulfilled, (state, { payload }) => {
-  //       state.following = [...payload];
-  //       state.isLoading = false;
-  //     })
-  //     .addCase(getFollowingCurrentUser.rejected, (state, { payload }) => {
-  //       state.isLoading = false;
-  //       state.isError = payload;
-  //     });
-  // },
 });
 
 export const { addFollowing, resetFollowing } = currentUserSlice.actions;

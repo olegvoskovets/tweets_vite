@@ -6,13 +6,11 @@ const UsersList = (users) => {
   const data = users.users;
 
   return (
-    <>
-      <ul className={css.user_list}>
-        {data.map((user) => (
-          <Card key={user.id} user={user} />
-        ))}
-      </ul>
-    </>
+    <ul className={css.user_list}>
+      {data.map((user) => (
+        <Card key={user.id} user={user} />
+      ))}
+    </ul>
   );
 };
 

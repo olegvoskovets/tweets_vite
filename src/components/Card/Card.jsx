@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Logo from "../../images/logo.png";
-
 import UserFoto from "../UserFoto/UserFoto";
 import css from "./Card.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,6 +36,16 @@ const Card = (props) => {
       following ? resetFollowing(currentUser.id) : addFollowing(currentUser.id)
     );
   };
+  const outputFollowers = (value) => {
+    const arr = String(value).split("");
+
+    if (arr.length > 3) {
+      arr.splice(-3, 0, ",");
+      return arr.join("");
+    } else {
+      return value;
+    }
+  };
 
   return (
     <>
@@ -59,7 +68,9 @@ const Card = (props) => {
         <div className={css.button_block}>
           <div className={css.button_block_position}>
             <div className={css.tweets_count}>{currentUser.tweets} Tweets</div>
-            <div className={css.followers_count}>{followers} Followers</div>
+            <div className={css.followers_count}>
+              {outputFollowers(followers)} Followers
+            </div>
 
             <button
               className={

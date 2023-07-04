@@ -32,7 +32,7 @@ const Header = () => {
         />
 
         <div className={css.rigth}>
-          <Link to="/profile/:id">
+          <Link to="/profile/currentUser">
             <div className={css.currentUser_login}>
               <img
                 src={currentUser}

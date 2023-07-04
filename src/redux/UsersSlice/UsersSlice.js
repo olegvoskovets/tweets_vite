@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUsers, updateFilterVisible } from "./operationsUsers";
+import { getUsers, getUsersProfile } from "./operationsUsers";
 
 const initialState = {
   users: [],
-  filterFollowing: [],
   dropdown_following: "all_follow",
   page: 1,
   isLoading: false,
   isError: null,
+  usersProfile: null,
 };
 
 const usersSlice = createSlice({
@@ -41,15 +41,15 @@ const usersSlice = createSlice({
         state.isLoading = false;
         state.isError = payload;
       })
-      .addCase(updateFilterVisible.pending, (state) => {
+      .addCase(getUsersProfile.pending, (state) => {
         state.isLoading = true;
         state.isError = "";
       })
-      .addCase(updateFilterVisible.fulfilled, (state, { payload }) => {
-        state.filterFollowing = payload;
+      .addCase(getUsersProfile.fulfilled, (state, { payload }) => {
+        state.usersProfile = payload;
         state.isLoading = false;
       })
-      .addCase(updateFilterVisible.rejected, (state, { payload }) => {
+      .addCase(getUsersProfile.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
       });

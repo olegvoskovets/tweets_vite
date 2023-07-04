@@ -1,11 +1,4 @@
-import {
-  Navigate,
-  Outlet,
-  Route,
-  // RouterProvider,
-  Routes,
-  // createBrowserRouter,
-} from "react-router-dom";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import LeftBar from "./components/LeftBar/LeftBar";
 import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage/HomePage";
@@ -14,9 +7,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import UsersPage from "./pages/UsersPage/UsersPage";
 
 import css from "./app.module.css";
-import Others from "./pages/Others/Others";
-
-// import OthersPage from "./pages/OthersPage/OthersPage";
+import OthersPage from "./pages/OthersPage/OthersPage";
 
 const App = () => {
   const Layout = () => {
@@ -26,7 +17,6 @@ const App = () => {
         <div className={css.container}>
           <div style={{ display: "flex" }}>
             <LeftBar />
-
             <main className={css.main}>
               <Outlet />
             </main>
@@ -44,7 +34,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/friends" element={<FriendsPage />} />
         <Route path="/profile/:id" element={<ProfilePage />} />
-        <Route path="/others" element={<Others />} />
+        <Route path="/others" element={<OthersPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
