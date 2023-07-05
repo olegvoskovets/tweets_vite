@@ -124,7 +124,7 @@ const Profile = () => {
                 {/* <EmailOutlinedIcon /> */}
                 <span>
                   {id !== "currentUser"
-                    ? `${userProfile.name}_1989@ukr.net`
+                    ? `${userProfile?.name}_1989@ukr.net`
                     : "Djon_1986@ukr.net"}
                 </span>
 
