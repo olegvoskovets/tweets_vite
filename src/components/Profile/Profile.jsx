@@ -29,8 +29,9 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (id === "currentUser") return;
-    dispatch(getUsersProfile(id));
+    if (id !== "currentUser") {
+      dispatch(getUsersProfile(id));
+    }
   }, [dispatch, id]);
 
   const { current } = useRef(location.state?.from);
@@ -49,7 +50,7 @@ const Profile = () => {
     dispatch(following ? resetFollowing(id) : addFollowing(id));
   };
 
-  if (!userProfile) return;
+  // if (!userProfile) return;
 
   return (
     <>
