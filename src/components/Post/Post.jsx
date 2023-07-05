@@ -1,15 +1,30 @@
+import { useEffect, useState } from "react";
 import css from "./Post.module.css";
+import { getUsersProfile } from "../../redux/UsersSlice/operationsUsers";
+import { useDispatch } from "react-redux";
 
 const Post = (post) => {
   const post_Current = post?.post;
+  const dispatch = useDispatch();
+  const [userPosts, setUserPosts] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // You can await here
+      const response = await dispatch(
+        getUsersProfile(post_Current.userId)
+      ).unwrap();
+      // ...
+      setUserPosts(response);
+    };
+    fetchData();
+  }, [dispatch, post_Current]);
 
   const getDateFormat = (date) => {
     const newDate = new Date(date);
     let day = newDate.getDate();
-    console.log(day); // 23
 
     let month = newDate.getMonth();
-    console.log(month + 1); // 8
 
     let year = newDate.getFullYear();
     return `${day}.${month + 1}.${year}`;
@@ -17,6 +32,11 @@ const Post = (post) => {
   return (
     <div className={css.post}>
       <div className={css.header}>
+        <div className={css.header_position}>
+          <img className={css.avatar} src={userPosts?.avatar} alt="" />
+          <span>{userPosts?.name}</span>
+        </div>
+
         <span>{getDateFormat(post_Current.date)}</span>
       </div>
 
@@ -30,11 +50,11 @@ const Post = (post) => {
       </div>
 
       <div className={css.post_footer_btn}>
-        <button className={css.btnFooter} onClick={"handleLikesPost"}>
+        <button className={css.btnFooter}>
           {/* <ThumbUpOffAltIcon /> */}
           Подобається
         </button>
-        <button className={css.btnFooter} onClick={"nandleAddComment"}>
+        <button className={css.btnFooter}>
           {/* <ChatBubbleOutlineIcon /> */}
           Коментувати
         </button>

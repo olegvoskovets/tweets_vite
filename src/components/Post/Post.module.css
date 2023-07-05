@@ -7,6 +7,16 @@
   background: var(--background-main-color);
   box-shadow: var(--box-shadow-main);
 }
+.header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.header_position {
+  display: flex;
+  align-items: center;
+}
 .post_text {
   padding: 20px 20px;
 }
@@ -14,6 +24,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  object-fit: cover;
+  background: #7651ca;
 }
 .foto_position {
   width: 80%;
