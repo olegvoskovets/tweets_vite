@@ -1,0 +1,11 @@
+@import url("../../index.css");
+
+.containerPost {
+  width: 700px;
+  margin: 0 auto;
+}
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

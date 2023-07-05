@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import currentUser from "../../images/currentUser.jpg";
 import Select from "react-select";
 import css from "./Header.module.css";
@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { updateDropdownFollowing } from "../../redux/UsersSlice/UsersSlice";
 
 const Header = () => {
+  const locatin = useLocation();
+
   const dispatch = useDispatch();
   const options = [
     { value: "all_follow", label: "All follow" },
@@ -24,13 +26,14 @@ const Header = () => {
             <span>Social tweets</span>
           </Link>
         </div>
-        <Select
-          options={options}
-          className={css.select}
-          defaultValue={options[0]}
-          onChange={nahdleChange}
-        />
-
+        {locatin.pathname === "/tweets" && (
+          <Select
+            options={options}
+            className={css.select}
+            defaultValue={options[0]}
+            onChange={nahdleChange}
+          />
+        )}
         <div className={css.rigth}>
           <Link to="/profile/currentUser">
             <div className={css.currentUser_login}>

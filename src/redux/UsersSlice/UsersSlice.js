@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUsers, getUsersProfile } from "./operationsUsers";
+import { getPosts, getUsers, getUsersProfile } from "./operationsUsers";
 
 const initialState = {
   users: [],
+  posts: [],
   dropdown_following: "all_follow",
   page: 1,
   isLoading: false,
@@ -50,6 +51,18 @@ const usersSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getUsersProfile.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = payload;
+      })
+      .addCase(getPosts.pending, (state) => {
+        state.isLoading = true;
+        state.isError = "";
+      })
+      .addCase(getPosts.fulfilled, (state, { payload }) => {
+        state.posts = [...payload];
+        state.isLoading = false;
+      })
+      .addCase(getPosts.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
       });

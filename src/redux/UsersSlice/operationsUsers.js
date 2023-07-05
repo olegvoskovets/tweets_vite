@@ -24,3 +24,14 @@ export const getUsersProfile = createAsyncThunk(
     }
   }
 );
+export const getPosts = createAsyncThunk(
+  "users/getPosts",
+  async (_, thunk_Api) => {
+    try {
+      const { data } = await Api.get(`posts`);
+      return data;
+    } catch (error) {
+      return thunk_Api.rejectWithValue(error.message);
+    }
+  }
+);

@@ -8,9 +8,11 @@ import {
   addFollowing,
   resetFollowing,
 } from "../../redux/currentUser/currentUserSlice";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Card = (props) => {
+  const location = useLocation();
+
   const dispatch = useDispatch();
 
   const user = props;
@@ -61,8 +63,8 @@ const Card = (props) => {
           <div className={css.background_card}></div>
         </div>
         <div className={css.rectangle}>
-          <Link to={`/profile/${currentUser.id}`}>
-            <UserFoto userUrl={currentUser.avatar} />
+          <Link to={`/profile/${currentUser.id}`} state={{ from: location }}>
+            <UserFoto url={currentUser.avatar} id={currentUser.id} />
           </Link>
         </div>
         <div className={css.button_block}>

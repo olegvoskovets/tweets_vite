@@ -5,3 +5,4 @@ export const selectFilterFollowing = (state) => state.users.filterFollowing;
 export const selectDropdownFollowing = (state) =>
   state.users.dropdown_following;
 export const selectUsersProofile = (state) => state.users.usersProfile;
+export const selectPosts = (state) => state.users.posts;

@@ -38,7 +38,7 @@ const LeftBar = () => {
         <ul className={css.menu}>
           <li>
             <NavLink
-              to="/profile"
+              to="/profile/currentUser"
               className={({ isActive }) =>
                 isActive ? `${css.item} ${css.active}` : `${css.item}`
               }

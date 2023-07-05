@@ -96,3 +96,12 @@ button {
   height: 40px;
   border-radius: 50%;
 }
+.active {
+  background: #5cd3a8;
+}
+.black {
+  background: border-box;
+}
+.btnText {
+  color: cornflowerblue;
+}
