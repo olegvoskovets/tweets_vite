@@ -9,3 +9,6 @@
   flex-direction: column;
   gap: 20px;
 }
+.postFoto {
+  width: 100%;
+}

@@ -2,7 +2,7 @@
 
 .post {
   width: 100%;
-
+  padding: 10px 20px;
   border-radius: 12px;
   background: var(--background-main-color);
   box-shadow: var(--box-shadow-main);
@@ -14,4 +14,42 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+.foto_position {
+  width: 80%;
+  margin: 0 auto;
+}
+.postFoto {
+  max-width: 100%;
+}
+.post_footer_btn {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.post_footer_btn {
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid cornflowerblue;
+}
+.btnFooter {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  flex: 1;
+  padding: 9px;
+  background-color: var(--background-main-color);
+  color: cornflowerblue;
+  font-size: 14px;
+  transition: 0.25s ease-in-out;
+}
+.btnFooter:hover {
+  background-color: #664aa7;
 }
